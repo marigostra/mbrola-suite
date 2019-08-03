@@ -1,0 +1,37 @@
+diff -ur distribution.orig/src/space.c distribution/src/space.c
+--- distribution.orig/src/space.c	2008-08-20 11:09:11 +0700
++++ distribution/src/space.c	2008-08-20 11:12:45 +0700
+@@ -242,8 +242,8 @@
+   ps->duration = (int *) malloc(sizeof(int)*(nphons+1));
+   ps->pb = (int *) malloc(sizeof(int)*(nphons+1));
+   ps->scale = (float *) malloc(sizeof(float)*(nphons+1));
+-  ps->phons = (char **) malloc(sizeof(int)*(nphons+1));
+-  ps->diphs = (char **) malloc(sizeof(int)*(nphons+1));
++  ps->phons = (char **) malloc(sizeof(char*)*(nphons+1));
++  ps->diphs = (char **) malloc(sizeof(char*)*(nphons+1));
+ 
+   for(i=0;i<nphons;i++) {
+     ps->phons[i] = (char *)malloc(sizeof(PHON_SZ));
+@@ -268,8 +268,8 @@
+   ps->duration = (int *) realloc(ps->duration,sizeof(int)*(nphons+1));
+   ps->pb = (int *) realloc(ps->pb,sizeof(int)*(nphons+1));
+   ps->scale = (float *) realloc(ps->scale,sizeof(float)*(nphons+1));
+-  ps->phons = (char **) realloc(ps->phons,sizeof(int)*(nphons+1));
+-  ps->diphs = (char **) realloc(ps->diphs,sizeof(int)*(nphons+1));
++  ps->phons = (char **) realloc(ps->phons,sizeof(char*)*(nphons+1));
++  ps->diphs = (char **) realloc(ps->diphs,sizeof(char*)*(nphons+1));
+ 
+   for(i=rem_p;i<nphons;i++) {
+     ps->phons[i] = (char *)malloc(sizeof(PHON_SZ));
+diff -ur distribution.orig/src/t2s.h distribution/src/t2s.h
+--- distribution.orig/src/t2s.h	2008-08-20 11:09:11 +0700
++++ distribution/src/t2s.h	2008-08-20 11:10:02 +0700
+@@ -65,7 +65,7 @@
+   int broad_cats_num;
+   int dur0_num;
+   int edin2sampa0_num;
+-  char prog[40];
++  char prog[1024];
+   int sr;
+   int fr_sz;
+   int fr_data;
