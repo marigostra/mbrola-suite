@@ -1,0 +1,118 @@
+diff -ur a/lib/dbm_prog.c b/lib/dbm_prog.c
+--- a/lib/dbm_prog.c	2019-08-03 10:07:09.332223635 +0700
++++ b/lib/dbm_prog.c	2015-11-06 21:12:27.000000000 +0600
+@@ -7,7 +7,7 @@
+ #ifdef FBSD_DATABASE
+ #include <db.h>
+ #else
+-#include <ndbm.h>
++#include <gdbm-ndbm.h>
+ #endif
+ 
+ #ifdef FBSD_DATABASE	/* this needs to be explicit  */
+diff -ur a/lib/Makefile b/lib/Makefile
+--- a/lib/Makefile	2019-08-03 10:07:09.324223852 +0700
++++ b/lib/Makefile	2015-11-06 21:12:27.000000000 +0600
+@@ -25,7 +25,7 @@
+ # Linux users
+ CC = gcc
+ CFLAGS = -g -Wall -pedantic
+-LIBS = -lm -lgdbm
++LIBS = -lm -lgdbm -lgdbm_compat
+ ############################################################################
+ 
+ OBJ = dbm_prog.c
+@@ -34,12 +34,12 @@
+ all: lexicon 
+ 
+ lexicon: text710.edin dbm_prog
+-	/bin/rm -i lexicon*
++	/bin/rm -f lexicon*
+ 	./dbm_prog -o lexicon -i text710.edin
+-	touch lexicon
++#	touch lexicon
+ 
+ text710.edin: text710.dat read_ox_dict
+-	read_ox_dict text710.dat > text710.edin
++	./read_ox_dict text710.dat > text710.edin
+ 
+ dbm_prog: $(OBJ)
+ 	$(CC) $(CFLAGS) -o $@ $(OBJ) $(LIBS)
+diff -ur a/lib/read_ox_dict b/lib/read_ox_dict
+--- a/lib/read_ox_dict	2019-08-03 10:07:09.332223635 +0700
++++ b/lib/read_ox_dict	2015-11-06 21:12:27.000000000 +0600
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/perl
++#!/usr/bin/perl
+ 
+ # Copyright (c) 1995 Alistair Conkie. All rights reserved.
+ # This program is free software; you can redistribute it and/or
+diff -ur a/src/Makefile b/src/Makefile
+--- a/src/Makefile	2019-08-03 10:07:09.332223635 +0700
++++ b/src/Makefile	2015-11-06 21:12:27.000000000 +0600
+@@ -25,7 +25,7 @@
+ # Linux users
+ CC = gcc
+ CFLAGS = -g -Wall -pedantic
+-LIBS = -lm -lgdbm
++LIBS = -lm -lgdbm -lgdbm_compat
+ ############################################################################
+ 
+ 
+diff -ur a/src/regexp.c b/src/regexp.c
+--- a/src/regexp.c	2019-08-03 10:07:09.332223635 +0700
++++ b/src/regexp.c	2015-11-06 21:12:27.000000000 +0600
+@@ -786,7 +786,7 @@
+      register const char *string;
+ {
+   register char *s;
+-  extern char *strchr();
++  //  extern char *strchr();
+ 
+   /* Be paranoid... */
+   if (prog == NULL || string == NULL) {
+@@ -885,7 +885,7 @@
+ {
+   register char *scan;	/* Current node. */
+   char *next;		/* Next node. */
+-  extern char *strchr();
++  //  extern char *strchr();
+ 
+   scan = prog;
+ #ifdef DEBUG
+diff -ur a/src/regsub.c b/src/regsub.c
+--- a/src/regsub.c	2019-08-03 10:07:09.332223635 +0700
++++ b/src/regsub.c	2015-11-06 21:12:27.000000000 +0600
+@@ -40,7 +40,7 @@
+   register char c;
+   register int no;
+   register int len;
+-  extern char *strncpy();
++  //  extern char *strncpy();
+ 
+   if (prog == NULL || source == NULL || dest == NULL) {
+     regerror("NULL parm to regsub");
+diff -ur a/src/space.c b/src/space.c
+--- a/src/space.c	2019-08-03 10:07:21.695894679 +0700
++++ b/src/space.c	2015-11-06 21:12:27.000000000 +0600
+@@ -15,7 +15,7 @@
+ #ifdef FBSD_DATABASE
+ #include <db.h>
+ #else
+-#include <ndbm.h>
++#include <gdbm-ndbm.h>
+ #endif
+ #include <fcntl.h>
+ 
+diff -ur a/src/transcribe.c b/src/transcribe.c
+--- a/src/transcribe.c	2019-08-03 10:07:09.332223635 +0700
++++ b/src/transcribe.c	2015-11-06 21:12:27.000000000 +0600
+@@ -13,7 +13,7 @@
+ #ifdef FBSD_DATABASE
+ #include <db.h>
+ #else
+-#include <ndbm.h>
++#include <gdbm-ndbm.h>
+ #endif
+ #include <fcntl.h>
+ 
