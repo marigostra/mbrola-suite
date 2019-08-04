@@ -10,6 +10,7 @@ out/freephone:
 	make -C freespeech.build
 	mkdir -p out
 	cp freespeech.build/freephone out/freephone
+	cp freespeech.build/lexicon.* out/
 
 out/mbrola:
 	cp -r mbrola mbrola.build
