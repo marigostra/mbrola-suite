@@ -1,8 +1,0 @@
-
-Here you can find the versions of the original packages.
-
-* Mbrola from https://github.com/numediart/MBROLA:
-  Date:   Thu Aug 1 13:54:40 2019 +0200
-  commit a95253691258a00f0c25f549443025b5ca589f76
-
-* freespeech-a10m

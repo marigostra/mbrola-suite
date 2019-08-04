@@ -15,4 +15,4 @@ out/mbrola:
 	cp -r mbrola mbrola.build
 	make -C mbrola.build
 	mkdir -p out
-	cp mbrola/bin/mbrola out/mbrola
+	cp mbrola.build/Bin/mbrola out/mbrola
