@@ -24,7 +24,11 @@ __freespeech:__ a10m
 
 ### Requirements and compilation
 
-In addition to usual gcc and make,
-you need the libgdbm-dev (as it is called in Debian and Ubuntu) package.
+Besides the quite usual packages gcc and make,
+you need libgdbm-dev (as it is called in Debian and Ubuntu).
 To compile this software just run "make" in the main directory,
 after that you will get the result in out/.
+
+If you would like to install the software,
+run "make PREFIX=/usr/loca install".
+Please replace the "/usr/local" string with the value whatever you want.

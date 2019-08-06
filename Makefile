@@ -17,3 +17,11 @@ out/mbrola:
 	make -C mbrola.build
 	mkdir -p out
 	cp mbrola.build/Bin/mbrola out/mbrola
+
+install:
+	install -pD -m755 out/mbrola $(PREFIX)/bin/mbrola
+	install -pD -m755 out/freephone $(PREFIX)/bin/freephone
+	install -pD -m644 en1/en1 $(PREFIX)/lib/mbrola-suite/en1
+	install -pD -m644 en1/en1mrpa $(PREFIX)/lib/mbrola-suite/en1mrpa
+	install -pD -m644 out/lexicon.dir $(PREFIX)/lib/mbrola-suite/lexicon.dir
+	install -pD -m644 out/lexicon.pag $(PREFIX)/lib/mbrola-suite/lexicon.pag
