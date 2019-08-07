@@ -1,0 +1,14 @@
+Source: mbrola-suite
+Section: unknown
+Priority: optional
+Maintainer: Michael Pozhidaev <msp@luwrain.org>
+Build-Depends: debhelper (>= 8.0.0), libgdbm-dev
+Standards-Version: 3.9.4
+Homepage: http://luwrain.org
+
+Package: mbrola-suite
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Conflicts: mbrola
+Description: A set of utilities to get an English TTS based on Mbrola
+  A set of utilities to get an English TTS based on Mbrola
