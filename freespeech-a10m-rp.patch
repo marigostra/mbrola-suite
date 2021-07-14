@@ -1,0 +1,12 @@
+diff -ur a/lib/dbm_prog.c b/lib/dbm_prog.c
+--- a/lib/dbm_prog.c	2021-07-15 04:59:41.005635269 +0700
++++ b/lib/dbm_prog.c	2021-07-15 05:00:57.726449897 +0700
+@@ -48,7 +48,7 @@
+         (void)fprintf(stderr,"\t-o output_file_without_extention -i input_file\n");
+                 exit(2);
+ 	}
+-	while((c = getopt(argc,argv,"i:o:")) != -1) {
++	while((c = getopt(argc,argv,"i:o:")) != (char)-1) {
+                 switch(c) {
+                         case 'i':
+                                 iptr = optarg;

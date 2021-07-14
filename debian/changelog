@@ -1,3 +1,9 @@
+	mbrola-suite (20210815) stable; urgency=medium
+
+  * Fixing compatibility with Raspberry Pi
+
+ -- Michael Pozhidaev <msp@luwrain.org>  Thu, 15 Jul 2021 05:12:31 +0700
+
 mbrola-suite (20190808-lwr1) stable; urgency=low
 
   Initial package
