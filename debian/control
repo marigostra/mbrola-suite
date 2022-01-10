@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Michael Pozhidaev <msp@luwrain.org>
 Build-Depends: debhelper (>= 8.0.0), libgdbm-dev, libgdbm-compat-dev
 Standards-Version: 3.9.4
-Homepage: http://luwrain.org
+Homepage: https://luwrain.org/?lang=en
 
 Package: mbrola-suite
 Architecture: any
