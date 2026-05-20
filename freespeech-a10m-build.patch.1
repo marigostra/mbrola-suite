@@ -1,12 +1,7 @@
 diff -ur a/lib/dbm_prog.c b/lib/dbm_prog.c
---- a/lib/dbm_prog.c	2026-05-20 15:52:10.047204118 +0700
-+++ b/lib/dbm_prog.c	2026-05-20 15:53:37.937234439 +0700
-@@ -3,11 +3,12 @@
- #include <sys/types.h>
- #include <limits.h>
- #include <string.h>
-+#include<unistd.h>
- #include <fcntl.h>
+--- a/lib/dbm_prog.c	2019-08-03 10:07:09.332223635 +0700
++++ b/lib/dbm_prog.c	2015-11-06 21:12:27.000000000 +0600
+@@ -7,7 +7,7 @@
  #ifdef FBSD_DATABASE
  #include <db.h>
  #else
@@ -16,8 +11,8 @@ diff -ur a/lib/dbm_prog.c b/lib/dbm_prog.c
  
  #ifdef FBSD_DATABASE	/* this needs to be explicit  */
 diff -ur a/lib/Makefile b/lib/Makefile
---- a/lib/Makefile	2026-05-20 15:52:10.047204118 +0700
-+++ b/lib/Makefile	2026-05-20 15:52:50.232125391 +0700
+--- a/lib/Makefile	2019-08-03 10:07:09.324223852 +0700
++++ b/lib/Makefile	2015-11-06 21:12:27.000000000 +0600
 @@ -25,7 +25,7 @@
  # Linux users
  CC = gcc
@@ -44,8 +39,8 @@ diff -ur a/lib/Makefile b/lib/Makefile
  dbm_prog: $(OBJ)
  	$(CC) $(CFLAGS) -o $@ $(OBJ) $(LIBS)
 diff -ur a/lib/read_ox_dict b/lib/read_ox_dict
---- a/lib/read_ox_dict	2026-05-20 15:52:10.047204118 +0700
-+++ b/lib/read_ox_dict	2026-05-20 15:52:50.232125391 +0700
+--- a/lib/read_ox_dict	2019-08-03 10:07:09.332223635 +0700
++++ b/lib/read_ox_dict	2015-11-06 21:12:27.000000000 +0600
 @@ -1,4 +1,4 @@
 -#!/usr/local/bin/perl
 +#!/usr/bin/perl
@@ -53,8 +48,8 @@ diff -ur a/lib/read_ox_dict b/lib/read_ox_dict
  # Copyright (c) 1995 Alistair Conkie. All rights reserved.
  # This program is free software; you can redistribute it and/or
 diff -ur a/src/Makefile b/src/Makefile
---- a/src/Makefile	2026-05-20 15:52:10.051204209 +0700
-+++ b/src/Makefile	2026-05-20 15:52:50.232125391 +0700
+--- a/src/Makefile	2019-08-03 10:07:09.332223635 +0700
++++ b/src/Makefile	2015-11-06 21:12:27.000000000 +0600
 @@ -25,7 +25,7 @@
  # Linux users
  CC = gcc
@@ -65,8 +60,8 @@ diff -ur a/src/Makefile b/src/Makefile
  
  
 diff -ur a/src/regexp.c b/src/regexp.c
---- a/src/regexp.c	2026-05-20 15:52:10.051204209 +0700
-+++ b/src/regexp.c	2026-05-20 15:52:50.232125391 +0700
+--- a/src/regexp.c	2019-08-03 10:07:09.332223635 +0700
++++ b/src/regexp.c	2015-11-06 21:12:27.000000000 +0600
 @@ -786,7 +786,7 @@
       register const char *string;
  {
@@ -86,8 +81,8 @@ diff -ur a/src/regexp.c b/src/regexp.c
    scan = prog;
  #ifdef DEBUG
 diff -ur a/src/regsub.c b/src/regsub.c
---- a/src/regsub.c	2026-05-20 15:52:10.051204209 +0700
-+++ b/src/regsub.c	2026-05-20 15:52:50.232125391 +0700
+--- a/src/regsub.c	2019-08-03 10:07:09.332223635 +0700
++++ b/src/regsub.c	2015-11-06 21:12:27.000000000 +0600
 @@ -40,7 +40,7 @@
    register char c;
    register int no;
@@ -98,8 +93,8 @@ diff -ur a/src/regsub.c b/src/regsub.c
    if (prog == NULL || source == NULL || dest == NULL) {
      regerror("NULL parm to regsub");
 diff -ur a/src/space.c b/src/space.c
---- a/src/space.c	2026-05-20 15:52:10.051204209 +0700
-+++ b/src/space.c	2026-05-20 15:52:50.232125391 +0700
+--- a/src/space.c	2019-08-03 10:07:21.695894679 +0700
++++ b/src/space.c	2015-11-06 21:12:27.000000000 +0600
 @@ -15,7 +15,7 @@
  #ifdef FBSD_DATABASE
  #include <db.h>
@@ -109,20 +104,9 @@ diff -ur a/src/space.c b/src/space.c
  #endif
  #include <fcntl.h>
  
-diff -ur a/src/t2s.h b/src/t2s.h
---- a/src/t2s.h	2026-05-20 15:52:10.051204209 +0700
-+++ b/src/t2s.h	2026-05-20 15:54:53.411019687 +0700
-@@ -1,6 +1,7 @@
- 
- #include <stdio.h>
- #include <string.h>
-+#include<unistd.h>
- #include <stdlib.h>
- #include <ctype.h>
- #include "regexp.h"
 diff -ur a/src/transcribe.c b/src/transcribe.c
---- a/src/transcribe.c	2026-05-20 15:52:10.051204209 +0700
-+++ b/src/transcribe.c	2026-05-20 15:52:50.232125391 +0700
+--- a/src/transcribe.c	2019-08-03 10:07:09.332223635 +0700
++++ b/src/transcribe.c	2015-11-06 21:12:27.000000000 +0600
 @@ -13,7 +13,7 @@
  #ifdef FBSD_DATABASE
  #include <db.h>
