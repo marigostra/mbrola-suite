@@ -164,17 +164,6 @@ diff -ur a/src/space.c b/src/space.c
  #endif
  #include <fcntl.h>
  
-diff -ur a/src/t2s.h b/src/t2s.h
---- a/src/t2s.h	2026-05-20 15:52:10.051204209 +0700
-+++ b/src/t2s.h	2026-05-20 15:54:53.411019687 +0700
-@@ -1,6 +1,7 @@
- 
- #include <stdio.h>
- #include <string.h>
-+#include<unistd.h>
- #include <stdlib.h>
- #include <ctype.h>
- #include "regexp.h"
 diff -ur a/src/transcribe.c b/src/transcribe.c
 --- a/src/transcribe.c	2026-05-20 15:52:10.051204209 +0700
 +++ b/src/transcribe.c	2026-05-20 15:52:50.232125391 +0700
