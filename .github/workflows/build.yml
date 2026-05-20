@@ -8,21 +8,42 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
     strategy:
       fail-fast: false
       matrix:
         include:
+          # Ubuntu x86_64
           - os: ubuntu
             version: '22.04'
+            runner: ubuntu-latest
+            arch: amd64
           - os: ubuntu
             version: '24.04'
+            runner: ubuntu-latest
+            arch: amd64
           - os: ubuntu
             version: '26.04'
+            runner: ubuntu-latest
+            arch: amd64
+          # Debian x86_64
           - os: debian
             version: '12'
+            runner: ubuntu-latest
+            arch: amd64
           - os: debian
             version: '13'
+            runner: ubuntu-latest
+            arch: amd64
+          # Debian aarch64 (ARM64)
+          - os: debian
+            version: '12'
+            runner: ubuntu-24.04-arm
+            arch: arm64
+          - os: debian
+            version: '13'
+            runner: ubuntu-24.04-arm
+            arch: arm64
 
     container:
       image: ${{ matrix.os }}:${{ matrix.version }}
@@ -47,5 +68,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: mbrola-suite-${{ matrix.os }}-${{ matrix.version }}
+          name: mbrola-suite-${{ matrix.os }}-${{ matrix.version }}-${{ matrix.arch }}
           path: build-artifacts/*.deb
