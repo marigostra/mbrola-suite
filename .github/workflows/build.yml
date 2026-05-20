@@ -41,11 +41,11 @@ jobs:
       - name: Build deb package
         run: |
           dpkg-buildpackage -us -uc -b
-          mkdir -p ../build-artifacts
-          mv ../*.deb ../build-artifacts/
+          mkdir -p build-artifacts
+          mv ../*.deb build-artifacts/
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: mbrola-suite-${{ matrix.os }}-${{ matrix.version }}
-          path: ../build-artifacts/*.deb
+          path: build-artifacts/*.deb
