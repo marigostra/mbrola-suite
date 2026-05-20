@@ -54,12 +54,14 @@ diff -ur a/lib/read_ox_dict b/lib/read_ox_dict
  # This program is free software; you can redistribute it and/or
 diff -ur a/src/Makefile b/src/Makefile
 --- a/src/Makefile	2026-05-20 15:52:10.051204209 +0700
-+++ b/src/Makefile	2026-05-20 15:52:50.232125391 +0700
-@@ -25,7 +25,7 @@
++++ b/src/Makefile	2026-05-20 16:42:41.848141950 +0700
+@@ -24,8 +24,8 @@
+ ############################################################################
  # Linux users
  CC = gcc
- CFLAGS = -g -Wall -pedantic
+-CFLAGS = -g -Wall -pedantic
 -LIBS = -lm -lgdbm
++CFLAGS = -g -Wall -pedantic -std=gnu17
 +LIBS = -lm -lgdbm -lgdbm_compat
  ############################################################################
  
